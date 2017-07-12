@@ -1,0 +1,249 @@
+{
+    "code": 0,
+    "message": "成功",
+    "data": [
+        {
+            "id": "01",
+            "name": "01.量化_极速机房交易信息定期展示_介绍类",
+            "type": 1,
+            "url": null,
+            "parentNodeId": null,
+            "remark": null,
+            "sortId": 1
+        },
+        {
+            "id": "02",
+            "name": "02.量化_仿真测试系统介绍及申请指南_介绍类",
+            "type": 1,
+            "url": null,
+            "parentNodeId": null,
+            "remark": null,
+            "sortId": 2
+        },
+        {
+            "id": "03",
+            "name": "03.量化_快速机房资源_介绍类",
+            "type": 1,
+            "url": null,
+            "parentNodeId": null,
+            "remark": null,
+            "sortId": 3
+        },
+        {
+            "id": "04",
+            "name": "04.量化_内嵌式量化交易平台_介绍类",
+            "type": 1,
+            "url": null,
+            "parentNodeId": null,
+            "remark": null,
+            "sortId": 4
+        },
+        {
+            "id": "05",
+            "name": "05.量化_自动化套利交易系统_介绍类",
+            "type": 1,
+            "url": null,
+            "parentNodeId": null,
+            "remark": null,
+            "sortId": 5
+        },
+        {
+            "id": "06",
+            "name": "06.量化_高精度量化回测平台_介绍类",
+            "type": 1,
+            "url": null,
+            "parentNodeId": null,
+            "remark": null,
+            "sortId": 6
+        },
+        {
+            "id": "07",
+            "name": "07.量化_上期所深度行情转发系统_介绍类",
+            "type": 1,
+            "url": null,
+            "parentNodeId": null,
+            "remark": null,
+            "sortId": 7
+        },
+        {
+            "id": "08",
+            "name": "08.量化_绩效分析系统_介绍类",
+            "type": 1,
+            "url": null,
+            "parentNodeId": null,
+            "remark": null,
+            "sortId": 8
+        },
+        {
+            "id": "09",
+            "name": "09.量化_信息交流板块_交流类",
+            "type": 1,
+            "url": null,
+            "parentNodeId": null,
+            "remark": null,
+            "sortId": 9
+        },
+        {
+            "id": "10",
+            "name": "10.量化_异步需求TICKET板块_申请类",
+            "type": 1,
+            "url": null,
+            "parentNodeId": "",
+            "remark": null,
+            "sortId": 10
+        },
+        {
+            "id": "11",
+            "name": "11.量化_量化和机构客户联合拜访申请板块_申请类",
+            "type": 1,
+            "url": null,
+            "parentNodeId": null,
+            "remark": null,
+            "sortId": 11
+        },
+        {
+            "id": "011",
+            "name": "2017_stat.xlsx",
+            "type": 0,
+            "url": "mock/assets/期权风控交易监控部0324/期权风控交易监控部0324.html",
+            "parentNodeId": "01",
+            "remark": null,
+            "sortId": 11
+        },
+        {
+            "id": "12",
+            "name": "12.量化_产品或服务申请板块_申请类",
+            "type": 1,
+            "url": null,
+            "parentNodeId": null,
+            "remark": null,
+            "sortId": 12
+        },
+        {
+            "id": "021",
+            "name": "仿真测试系统介绍及申请指南.docx",
+            "type": 0,
+            "url": "http://oa.sywgqh.com.cn:41901/appfile/modules/apptech/source_file/021.docx",
+            "parentNodeId": "02",
+            "remark": null,
+            "sortId": 21
+        },
+        {
+            "id": "031",
+            "name": "上期所极速交易系统彩页.pdf",
+            "type": 0,
+            "url": "http://oa.sywgqh.com.cn:41901/appfile/modules/apptech/source_file/031.pdf",
+            "parentNodeId": "03",
+            "remark": null,
+            "sortId": 31
+        },
+        {
+            "id": "032",
+            "name": "郑商所极速交易系统彩页.pdf",
+            "type": 0,
+            "url": "http://oa.sywgqh.com.cn:41901/appfile/modules/apptech/source_file/032.pdf",
+            "parentNodeId": "03",
+            "remark": null,
+            "sortId": 32
+        },
+        {
+            "id": "041",
+            "name": "内嵌式量化交易平台彩页0228x.pdf",
+            "type": 0,
+            "url": "http://oa.sywgqh.com.cn:41901/appfile/modules/apptech/source_file/041.pdf",
+            "parentNodeId": "04",
+            "remark": null,
+            "sortId": 41
+        },
+        {
+            "id": "051",
+            "name": "自动化套利交易系统简介.pptx",
+            "type": 0,
+            "url": "http://oa.sywgqh.com.cn:41901/appfile/modules/apptech/source_file/051.pptx",
+            "parentNodeId": "05",
+            "remark": null,
+            "sortId": 51
+        },
+        {
+            "id": "052",
+            "name": "自动化套利交易系统演示.avi",
+            "type": 0,
+            "url": "http://oa.sywgqh.com.cn:41901/appfile/modules/apptech/source_file/052.avi",
+            "parentNodeId": "05",
+            "remark": null,
+            "sortId": 52
+        },
+        {
+            "id": "061",
+            "name": "高精度量化回测平台白皮书0228x.pdf",
+            "type": 0,
+            "url": "http://oa.sywgqh.com.cn:41901/appfile/modules/apptech/source_file/061.pdf",
+            "parentNodeId": "06",
+            "remark": null,
+            "sortId": 61
+        },
+        {
+            "id": "071",
+            "name": "全档行情转发系统0228x.pdf",
+            "type": 0,
+            "url": "http://oa.sywgqh.com.cn:41901/appfile/modules/apptech/source_file/071.pdf",
+            "parentNodeId": "07",
+            "remark": null,
+            "sortId": 71
+        },
+        {
+            "id": "072",
+            "name": "深度行情转发系统.pptx",
+            "type": 0,
+            "url": "http://oa.sywgqh.com.cn:41901/appfile/modules/apptech/source_file/072.pptx",
+            "parentNodeId": "07",
+            "remark": null,
+            "sortId": 72
+        },
+        {
+            "id": "081",
+            "name": "FOF风险监控平台0228x.pdf",
+            "type": 0,
+            "url": "http://oa.sywgqh.com.cn:41901/appfile/modules/apptech/source_file/081.pdf",
+            "parentNodeId": "08",
+            "remark": null,
+            "sortId": 81
+        },
+        {
+            "id": "091",
+            "name": "信息交流板块描述.docx",
+            "type": 0,
+            "url": "http://oa.sywgqh.com.cn:41901/appfile/modules/apptech/source_file/091.docx",
+            "parentNodeId": "09",
+            "remark": null,
+            "sortId": 91
+        },
+        {
+            "id": "101",
+            "name": "异步需求TICKET模块描述.docx",
+            "type": 0,
+            "url": "http://oa.sywgqh.com.cn:41901/appfile/modules/apptech/source_file/101.docx",
+            "parentNodeId": "10",
+            "remark": null,
+            "sortId": 101
+        },
+        {
+            "id": "111",
+            "name": "量化和机构客户联合拜访申请板块描述.docx",
+            "type": 0,
+            "url": "http://oa.sywgqh.com.cn:41901/appfile/modules/apptech/source_file/111.docx",
+            "parentNodeId": "11",
+            "remark": null,
+            "sortId": 111
+        },
+        {
+            "id": "121",
+            "name": "产品或服务申请板块描述.docx",
+            "type": 0,
+            "url": "http://oa.sywgqh.com.cn:41901/appfile/modules/apptech/source_file/121.docx",
+            "parentNodeId": "12",
+            "remark": null,
+            "sortId": 121
+        }
+    ]
+}
