@@ -1,5 +1,4 @@
-import $ from 'jquery'
-
+import axios from 'axios'
 
 class WebServer {
   constructor(n) {
@@ -22,16 +21,13 @@ class WebServer {
     }else {
       url = this.host+url;
     }
-    return new Promise((resolve,reject)=>{
-      $.get(url, param, function(res){
-        if(!res.code){
-          resolve(res)
-        }else {
-          alert(res.message);
-          reject();
-        }
-      })
-    })
+    return axios.get(url, param).then(function(res){
+      return res.data
+      }
+    )
+    .catch(function (error) {
+      console.log(error);
+    });
   }
   getArticleList(param){
     var url = this.url.articleList;
