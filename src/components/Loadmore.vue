@@ -81,14 +81,14 @@
                 this.$emit('bottom-status-change', val);
                 switch (val) {
                     case 'pull':
-                        this.bottomText = this.bottomPullText;
-                        break;
+                    this.bottomText = this.bottomPullText;
+                    break;
                     case 'drop':
-                        this.bottomText = this.bottomDropText;
-                        break;
+                    this.bottomText = this.bottomDropText;
+                    break;
                     case 'loading':
-                        this.bottomText = this.bottomLoadingText;
-                        break;
+                    this.bottomText = this.bottomLoadingText;
+                    break;
                 }
             }
         },
@@ -98,12 +98,12 @@
                 this.bottomDropped = false;
                 this.$nextTick(() => {
                     if (this.scrollEventTarget === window) {
-                    document.body.scrollTop += 50;
-                } else {
-                    this.scrollEventTarget.scrollTop += 50;
-                }
-                this.translate = 0;
-            });
+                        document.body.scrollTop += 50;
+                    } else {
+                        this.scrollEventTarget.scrollTop += 50;
+                    }
+                    this.translate = 0;
+                });
                 // 注释
                 if (!this.bottomAllLoaded && !this.containerFilled) {
                     this.fillContainer();
@@ -113,15 +113,15 @@
             getScrollEventTarget(element) {
                 let currentNode = element;
                 while (currentNode && currentNode.tagName !== 'HTML' &&
-                currentNode.tagName !== 'BODY' && currentNode.nodeType === 1) {
+                    currentNode.tagName !== 'BODY' && currentNode.nodeType === 1) {
                     let overflowY = document.defaultView.getComputedStyle(currentNode).overflowY;
-                    if (overflowY === 'scroll' || overflowY === 'auto') {
-                        return currentNode;
-                    }
-                    currentNode = currentNode.parentNode;
+                if (overflowY === 'scroll' || overflowY === 'auto') {
+                    return currentNode;
                 }
-                return window;
-            },
+                currentNode = currentNode.parentNode;
+            }
+            return window;
+        },
             //  获取scrollTop
             getScrollTop(element) {
                 if (element === window) {
@@ -151,17 +151,17 @@
                 if (this.autoFill) {
                     this.$nextTick(() => {
                         if (this.scrollEventTarget === window) {
-                        this.containerFilled = this.$el.getBoundingClientRect().bottom >=
-                                document.documentElement.getBoundingClientRect().bottom;
-                    } else {
-                        this.containerFilled = this.$el.getBoundingClientRect().bottom >=
-                                this.scrollEventTarget.getBoundingClientRect().bottom;
-                    }
-                    if (!this.containerFilled) {
-                        this.bottomStatus = 'loading';
-                        this.bottomMethod();
-                    }
-                });
+                            this.containerFilled = this.$el.getBoundingClientRect().bottom >=
+                            document.documentElement.getBoundingClientRect().bottom;
+                        } else {
+                            this.containerFilled = this.$el.getBoundingClientRect().bottom >=
+                            this.scrollEventTarget.getBoundingClientRect().bottom;
+                        }
+                        if (!this.containerFilled) {
+                            this.bottomStatus = 'loading';
+                            this.bottomMethod();
+                        }
+                    });
                 }
             },
             //  获取监听滚动元素的scrollTop
@@ -201,22 +201,22 @@
                     this.bottomReached = this.bottomReached || this.checkBottomReached();
                 }
                 if (typeof this.bottomMethod === 'function' && this.direction === 'up' &&
-                        this.bottomReached && this.bottomStatus !== 'loading' && !this.bottomAllLoaded) {
+                    this.bottomReached && this.bottomStatus !== 'loading' && !this.bottomAllLoaded) {
                     // 有加载函数，是向上拉，有滚动距离，不是正在加载ajax，没有加载到最后一页
-                    event.preventDefault();
-                    event.stopPropagation();
-                    if (this.maxDistance > 0) {
-                        this.translate = Math.abs(distance) <= this.maxDistance
-                                ? this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance : this.translate;
-                    } else {
-                        this.translate = this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance;
-                    }
-                    if (this.translate > 0) {
-                        this.translate = 0;
-                    }
-                    this.bottomStatus = -this.translate >= this.bottomDistance ? 'drop' : 'pull';
+                event.preventDefault();
+                event.stopPropagation();
+                if (this.maxDistance > 0) {
+                    this.translate = Math.abs(distance) <= this.maxDistance
+                    ? this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance : this.translate;
+                } else {
+                    this.translate = this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance;
                 }
-            },
+                if (this.translate > 0) {
+                    this.translate = 0;
+                }
+                this.bottomStatus = -this.translate >= this.bottomDistance ? 'drop' : 'pull';
+            }
+        },
             // ontouchend事件
             handleTouchEnd() {
                 if (this.direction === 'up' && this.bottomReached && this.translate < 0) {

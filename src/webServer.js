@@ -2,7 +2,7 @@ import axios from 'axios'
 
 class WebServer {
   constructor(n) {
-      this.mock = true;
+    this.mock = true;
       // this.host = 'http://192.168.8.18/';
       this.host = 'http://oa.sywgqh.com.cn:41901/';
       this.url={
@@ -15,57 +15,57 @@ class WebServer {
         userDetail: 'appdoor/weixin_user_api/get_user_detail_json',
         userPermission: 'appdoor/privilege_api/get_access_application_json'
       };
-  }
-  handler(url,param){
-    if (this.mock) {
-      url = 'mock/'+ url + '.json';
-    }else {
-      url = this.host+url;
     }
-    var config = {params: param};
-    return axios.get(url, config).then(function(res){
-      return res.data
+    handler(url,param){
+      if (this.mock) {
+        url = 'mock/'+ url + '.json';
+      }else {
+        url = this.host+url;
       }
-    )
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-  getArticleList(param){
-    var url = this.url.articleList;
-    return this.handler(url, param);
-  }
-  getArticleMenuList(param){
-    var url = this.url.articleMenuList;
-    return this.handler(url, param);
-  }
-  getTechList(param){
-    var url = this.url.techList;
-    return this.handler(url, param);
-  }
-  getTechMenuList(param){
-    var url = this.url.techMenuList;
-    return this.handler(url, param);
-  }
-  getTechAllList(param){
-    var url = this.url.techAllList;
-    return this.handler(url, param);
-  }
-  getVisitPage(param){
-    var url = this.url.visitPage;
-    return this.handler(url, param);
-  }
-  getUserDetail(param){
-    var url = this.url.userDetail;
-    return this.handler(url, param);
-  }
-  getPermission(param){
-    var url = this.url.userPermission;
-    return this.handler(url, param);
+      var config = {params: param};
+      return axios.get(url, config).then(function(res){
+        return res.data
+      }
+      )
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+    getArticleList(param){
+      var url = this.url.articleList;
+      return this.handler(url, param);
+    }
+    getArticleMenuList(param){
+      var url = this.url.articleMenuList;
+      return this.handler(url, param);
+    }
+    getTechList(param){
+      var url = this.url.techList;
+      return this.handler(url, param);
+    }
+    getTechMenuList(param){
+      var url = this.url.techMenuList;
+      return this.handler(url, param);
+    }
+    getTechAllList(param){
+      var url = this.url.techAllList;
+      return this.handler(url, param);
+    }
+    getVisitPage(param){
+      var url = this.url.visitPage;
+      return this.handler(url, param);
+    }
+    getUserDetail(param){
+      var url = this.url.userDetail;
+      return this.handler(url, param);
+    }
+    getPermission(param){
+      var url = this.url.userPermission;
+      return this.handler(url, param);
+    }
+
   }
 
-}
+  var webServer = new WebServer();
 
-var webServer = new WebServer();
-
-export default webServer
+  export default webServer
