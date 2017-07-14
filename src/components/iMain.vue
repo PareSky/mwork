@@ -70,7 +70,7 @@
     routeCRM : ()=> {
       window.location = 'http://oa.sywgqh.com.cn:41901/sywgqh/vision/mobileportal.jsp';
     },
-    routeReport : ()=> {
+    routeReport : function(){
       console.log(bus.user.userid)
       var param = {userId: bus.user.userid, applicationId:'appreport'}
       webServer.getPermission(param).then(res=>{
@@ -87,7 +87,7 @@
       var code = this.$route.query.code;
       var param = {weixinCode: code};
       webServer.getUserDetail(param).then((res)=>{
-        bus.user = res.data[0];
+        bus.user = res.data;
       })}
     }
   }

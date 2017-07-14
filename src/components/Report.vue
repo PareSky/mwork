@@ -1,5 +1,8 @@
 <template>
   <div class='reprot'>
+      <div class='back-btn' @click="goBack">
+        <Icon type="ios-arrow-left" class='back-icon'></Icon>
+      </div>
     <!-- 上拉加载更多 -->
     <load-more
     :bottom-method="loadBottom"
@@ -9,7 +12,7 @@
     @bottom-status-change="handleBottomChange"
     ref="loadmore">
 
-    平台使用记录
+    <div>平台使用记录</div>
     <date-picker :value="visitDate" format="yyyy-MM-dd" type="date" placeholder="选择日期" @on-change='dateSelect' :editable="editable" placement="bottom-end" class="datePicker" ></date-picker>
     <iTable border :columns="columns6" :data="data5"></iTable>
     <br/>
@@ -21,6 +24,7 @@
 </template>
 <script>
   import loadmore from './Loadmore'
+  import router from '../router'
   import webServer from '../webServer'
   import bus from '../bus'
   export default {
@@ -87,6 +91,9 @@
         }
       },
       methods:{
+        goBack: function(){
+          router.push('/');
+        },
         /* 下拉加载 */
         _scroll: function(ev) {
           ev = ev || event;
@@ -107,7 +114,7 @@
             pageSize: this.pageSize,
             visitPageValue: 'appdoor_index',
             visitDate: this.visitDate,
-            isFilterVisitorName: false
+            isFilterVisitorName: true
           };
           webServer.getVisitPage(param).then(res => {
             for(var item in res.data){
@@ -154,5 +161,9 @@
       position: relative;
       width: 3rem;
       left: 7rem; 
+    }
+    .back-icon{
+      font-size: 1rem;
+      float: left;
     }
   </style>

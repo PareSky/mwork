@@ -2,7 +2,7 @@ import axios from 'axios'
 
 class WebServer {
   constructor(n) {
-    this.mock = true;
+    this.mock = false;
       // this.host = 'http://192.168.8.18/';
       this.host = 'http://oa.sywgqh.com.cn:41901/';
       this.url={
@@ -16,17 +16,21 @@ class WebServer {
         userPermission: 'appdoor/privilege_api/get_access_application_json'
       };
     }
-    handler(url,param){
+    handler(url,param,method){
       if (this.mock) {
         url = 'mock/'+ url + '.json';
       }else {
         url = this.host+url;
       }
-      var config = {params: param};
-      return axios.get(url, config).then(function(res){
+      var config = {
+        url:url,
+        method: method||'get',
+        params: param,
+        data:param
+      };
+      return axios(config).then(function(res){
         return res.data
-      }
-      )
+      })
       .catch(function (error) {
         console.log(error);
       });
@@ -53,7 +57,7 @@ class WebServer {
     }
     getVisitPage(param){
       var url = this.url.visitPage;
-      return this.handler(url, param);
+      return this.handler(url, param,'post');
     }
     getUserDetail(param){
       var url = this.url.userDetail;
