@@ -82,11 +82,12 @@ export default {
     }
   },
   created: function() {
+    if (!bus.user) {
     var code = this.$route.query.CODE;
     var param = {weixinCode: code};
     webServer.getUserDetail(param).then((res)=>{
       bus.user = res.data[0];
-    })
+    })}
   }
 }
 </script>

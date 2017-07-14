@@ -11,6 +11,7 @@ class WebServer {
         techMenuList: 'apptech/source_node/get_root_list_json',
         techList : 'apptech/source_node/get_by_parentNodeId_list_json',
         techAllList: 'apptech/source_node/get_list_json',
+        visitPage: 'appdoor/visit_page_log/get_page_json',
         userDetail: 'appdoor/weixin_user_api/get_user_detail_json',
         userPermission: 'appdoor/privilege_api/get_access_application_json'
       };
@@ -21,7 +22,8 @@ class WebServer {
     }else {
       url = this.host+url;
     }
-    return axios.get(url, param).then(function(res){
+    var config = {params: param};
+    return axios.get(url, config).then(function(res){
       return res.data
       }
     )
@@ -44,9 +46,13 @@ class WebServer {
   getTechMenuList(param){
     var url = this.url.techMenuList;
     return this.handler(url, param);
-  }user_detail
+  }
   getTechAllList(param){
     var url = this.url.techAllList;
+    return this.handler(url, param);
+  }
+  getVisitPage(param){
+    var url = this.url.visitPage;
     return this.handler(url, param);
   }
   getUserDetail(param){

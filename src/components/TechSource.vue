@@ -96,7 +96,6 @@ export default {
       // this.getTechList(param);
     },
     selectMenu: function(n){
-      console.log(n);
       this.parentNodeId = n;
       this.showMenu = false;
     },

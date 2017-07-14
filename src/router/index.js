@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Main from '@/components/Main'
+import iMain from '@/components/iMain'
 import Study from '@/components/Study'
 import Article from '@/components/Article'
 import TechSource from '@/components/TechSource'
@@ -12,8 +12,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Main',
-      component: Main
+      name: 'iMain',
+      component: iMain
     },
     {
       path: '/study',

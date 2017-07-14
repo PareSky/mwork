@@ -8,6 +8,7 @@ import 'iview/dist/styles/iview.css'
 import Iview from './components/Iview'
 import bigMenu from './components/BigMenu'
 import loadmore from './components/Loadmore'
+import bus from './bus'
 
 Vue.use(Iview);
 Vue.use(bigMenu);

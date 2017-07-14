@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import bus from '../bus'
 import router from '../router'
 import webServer from '../webServer'
 export default {

@@ -1,0 +1,31 @@
+{
+    "code": 0,
+    "message": "成功",
+    "data": [
+        {
+            "visitorId": "0000",
+            "visitorName": "张三",
+            "visitTime": "2017-07-11 15:53:36"
+        },
+        {
+            "visitorId": "0000",
+            "visitorName": "张三",
+            "visitTime": "2017-07-11 15:53:36"
+        },
+        {
+            "visitorId": "0000",
+            "visitorName": "张三",
+            "visitTime": "2017-07-11 15:53:36"
+        },
+        {
+            "visitorId": "0000",
+            "visitorName": "张三",
+            "visitTime": "2017-07-11 15:53:36"
+        },
+        {
+            "visitorId": "0000",
+            "visitorName": "张三",
+            "visitTime": "2017-07-11 15:53:36"
+        }
+    ]
+}
