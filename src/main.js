@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import $ from 'jquery'
 import 'iview/dist/styles/iview.css'
 import Iview from './components/Iview'
 import bigMenu from './components/BigMenu'
