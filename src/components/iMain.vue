@@ -71,7 +71,11 @@
       window.location = 'http://oa.sywgqh.com.cn:41901/sywgqh/vision/mobileportal.jsp';
     },
     routeReport : function(){
-      console.log(bus.user.userid)
+      console.log(bus.user)
+      if (!bus.user) {
+        alert('请稍等');
+        return;
+      }
       var param = {userId: bus.user.userid, applicationId:'appreport'}
       webServer.getPermission(param).then(res=>{
         if (!res.data) {
@@ -83,7 +87,7 @@
     }
   },
   created: function() {
-    if (!bus.user) {
+    if (!bus.user.hasOwnProperty('userid')) {
       var code = this.$route.query.code;
       var param = {weixinCode: code};
       webServer.getUserDetail(param).then((res)=>{

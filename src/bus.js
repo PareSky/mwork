@@ -1,6 +1,6 @@
 class Bus {
   constructor(n) {
-      this.user=null;
+      this.user={moke:true};
   }
 }
 
