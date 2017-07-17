@@ -17,17 +17,18 @@ class WebServer {
       };
     }
     handler(url,param,method){
-      if (this.mock) {
-        url = 'mock/'+ url + '.json';
-      }else {
-        url = this.host+url;
-      }
       var config = {
         url:url,
         method: method||'get',
         params: param,
         data:param
       };
+      if (this.mock) {
+        config.url = 'mock/'+ url + '.json';
+        config.method = 'get';
+      }else {
+        config.url = this.host+url;
+      }
       return axios(config).then(function(res){
         return res.data
       })

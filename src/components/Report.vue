@@ -13,7 +13,8 @@
     ref="loadmore">
 
     <div>平台使用记录</div>
-    <date-picker :value="visitDate" format="yyyy-MM-dd" type="date" placeholder="选择日期" @on-change='dateSelect' :editable="editable" placement="bottom-end" class="datePicker" ></date-picker>
+    <div class='dp'>
+      <date-picker :value="visitDate" format="yyyy-MM-dd" type="date" placeholder="选择日期" @on-change='dateSelect' :editable="editable" placement="bottom-end" class="datePicker" ></date-picker></div>
     <iTable border :columns="columns6" :data="data5"></iTable>
     <br/>
     <div v-show="loading" slot="bottom" class="loading">
@@ -158,12 +159,16 @@
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style scoped>
     .datePicker{
-      position: relative;
+      position: absolute;
       width: 3rem;
-      left: 7rem; 
+      left: 7rem;
+      top: 0;
     }
     .back-icon{
       font-size: 1rem;
       float: left;
+    }
+    .dp{
+      margin-top: 0.5rem;
     }
   </style>
