@@ -1,8 +1,7 @@
 {
     "code": 0,
     "message": "成功",
-    "data": [
-        {
+    "data": {
             "userid": "lisi",
             "name": "李四",
             "department": [
@@ -14,5 +13,4 @@
             "email": "xxx@xx.com",
             "avatar": "http://shp.qpic.cn/bizmp/xxxxxxxxxxx/0"
         }
-    ]
 }

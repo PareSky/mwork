@@ -71,11 +71,6 @@
       window.location = 'http://oa.sywgqh.com.cn:41901/sywgqh/vision/mobileportal.jsp';
     },
     routeReport : function(){
-      console.log(bus.user)
-      if (!bus.user) {
-        alert('请稍等');
-        return;
-      }
       var param = {userId: bus.user.userid, applicationId:'appreport'}
       webServer.getPermission(param).then(res=>{
         if (!res.data) {
@@ -84,15 +79,26 @@
         }
         router.push('report');
       })
+    },
+    GetQueryString(name)
+    {
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var query = location.href.indexOf('?');
+     var r = location.href.substr(query+1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
     }
   },
   created: function() {
-    if (!bus.user.hasOwnProperty('userid')) {
-      var code = this.$route.query.code;
+    var getid = setInterval(()=>{
+    if (!bus.user.userid) {
+      var code = this.GetQueryString('code');
       var param = {weixinCode: code};
       webServer.getUserDetail(param).then((res)=>{
-        bus.user = res.data;
-      })}
+        bus.user = res.data||{};
+      })}else{
+        clearInterval(getid);
+      }
+    },500)
     }
   }
 </script>

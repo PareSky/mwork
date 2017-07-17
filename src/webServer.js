@@ -2,7 +2,7 @@ import axios from 'axios'
 
 class WebServer {
   constructor(n) {
-    this.mock = false;
+    this.mock = true;
       // this.host = 'http://192.168.8.18/';
       this.host = 'http://oa.sywgqh.com.cn:41901/';
       this.url={
@@ -59,6 +59,7 @@ class WebServer {
       var url = this.url.visitPage;
       return this.handler(url, param,'post');
     }
+    //if fail, return null
     getUserDetail(param){
       var url = this.url.userDetail;
       return this.handler(url, param);
