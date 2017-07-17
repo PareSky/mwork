@@ -2,7 +2,7 @@ import axios from 'axios'
 
 class WebServer {
   constructor(n) {
-    this.mock = true;
+    this.mock = false;
       // this.host = 'http://192.168.8.18/';
       this.host = 'http://oa.sywgqh.com.cn:41901/';
       this.url={
