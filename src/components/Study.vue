@@ -44,7 +44,6 @@
 
 <script>
   import bus from '../bus'
-  import router from '../router'
   import webServer from '../webServer'
   export default {
     name: 'study',
@@ -68,7 +67,7 @@
     },
     methods:{
       goBack: function(){
-        router.push('/');
+        this.$router.push('/');
       },
       search: function(){
         var param = {value:this.inputVal,menu:this.activeMenu};
@@ -108,10 +107,10 @@
       callArtList: function(param){
         return webServer.getArticleList(param);
       },
-      toArticle : (n)=> {
+      toArticle : function(n) {
         console.log('toArticle',n);
       // window.location = n;
-      router.push({name:'Article', params: { src: n ,prePage:"study"}});
+      this.$router.push({name:'Article', params: { src: n ,prePage:"study"}});
     },
     setList: function(list){
       this.menuList = list;

@@ -25,7 +25,6 @@
 </template>
 <script>
   import loadmore from './Loadmore'
-  import router from '../router'
   import webServer from '../webServer'
   import bus from '../bus'
   export default {
@@ -47,7 +46,7 @@
 
           columns6: [
           {
-            title: '日期',
+            title: '时间',
             key: 'visitTime'
           },
           {
@@ -55,7 +54,7 @@
             key: 'visitorName'
           },
           {
-            title: '工号',
+            title: '账号',
             key: 'visitorId'
           },
           {
@@ -93,7 +92,7 @@
       },
       methods:{
         goBack: function(){
-          router.push('/');
+          this.$router.push('/');
         },
         /* 下拉加载 */
         _scroll: function(ev) {
@@ -118,8 +117,10 @@
             isFilterVisitorName: true
           };
           webServer.getVisitPage(param).then(res => {
-            for(var item in res.data){
-              this.data5.push(res.data[item]);
+            for(var i in res.data){
+              var item = res.data[i];
+              item.visitTime = item.visitTime.substr(11);
+              this.data5.push(item);
             }
             setTimeout(() => {
               this.$nextTick(() => {
@@ -165,8 +166,10 @@
       top: 0;
     }
     .back-icon{
-      font-size: 1rem;
+      font-size: 0.7rem;
+      position: relative;
       float: left;
+      left: 0.3rem;
     }
     .dp{
       margin-top: 0.5rem;

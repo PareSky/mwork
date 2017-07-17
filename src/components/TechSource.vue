@@ -43,7 +43,6 @@
 <script>
   import webServer from '../webServer'
   import bigMenu from './BigMenu'
-  import router from '../router'
   export default {
     name: 'techSource',
     data () {
@@ -62,15 +61,15 @@
         var param = {value:this.inputVal};
       // this.getArticleList(param);
     },
-    toArticle : (n)=> {
+    toArticle : function(n){
       console.log('toArticle',n);
-      router.push({name:'Article', params: { src: n, prePage: 'techSource' }});
+      this.$router.push({name:'Article', params: { src: n, prePage: 'techSource' }});
     },
     switchImg: function(){
       this.imgflag = !this.imgflag;
     },
     goBack: function(){
-      router.push('/');
+      this.$router.push('/');
     },
     getNextList: function(id, parentNodeId){
       var param = {

@@ -50,7 +50,6 @@
 </template>
 
 <script>
-  import router from '../router'
   import webServer from '../webServer'
   import bus from '../bus'
   export default {
@@ -61,11 +60,11 @@
       }
     },
     methods:{
-      routeToTech : ()=> {
-       router.push('techSource');
+      routeToTech : function() {
+       this.$router.push('techSource');
      },
-     routeToStudy : ()=> {
-      router.push('study');
+     routeToStudy : function() {
+      this.$router.push('study');
     },
     routeCRM : ()=> {
       window.location = 'http://oa.sywgqh.com.cn:41901/sywgqh/vision/mobileportal.jsp';
@@ -77,7 +76,7 @@
           alert('你没有权限');
           return
         }
-        router.push('report');
+        this.$router.push('report');
       })
     },
     GetQueryString(name)
