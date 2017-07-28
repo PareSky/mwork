@@ -13,7 +13,8 @@ class WebServer {
         techAllList: 'apptech/source_node/get_list_json',
         visitPage: 'appdoor/visit_page_log/get_page_json',
         userDetail: 'appdoor/weixin_user_api/get_user_detail_json',
-        userPermission: 'appdoor/privilege_api/get_access_application_json'
+        userPermission: 'appdoor/privilege_api/get_access_application_json',
+        smartbi: 'appdoor/smartbi_authen_api/authen_redirect_url?userId=useridValue&redirectUrl=http://oa.sywgqh.com.cn:41901/smartbi/vision/mobileportal.jsp'
       };
     }
     handler(url,param,method){
@@ -68,6 +69,11 @@ class WebServer {
     getPermission(param){
       var url = this.url.userPermission;
       return this.handler(url, param);
+    }
+    toSmartbi(param){
+      var url = this.host+ this.url.smartbi;
+      url = url.replace('useridValue', param.userid);
+      location.href = url;
     }
 
   }

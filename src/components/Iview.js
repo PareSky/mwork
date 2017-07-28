@@ -6,6 +6,7 @@ import Table from 'iview/src/components/table';
 import Spin from 'iview/src/components/spin';
 import DatePicker from 'iview/src/components/date-picker';
 
+
 const Iview = {
 	install: function(Vue){
 		Vue.component('iMenu',Menu);

@@ -1,8 +1,14 @@
 <template>
   <div class='reprot'>
+    <div class='header'>
       <div class='back-btn' @click="goBack">
         <Icon type="ios-arrow-left" class='back-icon'></Icon>
       </div>
+      <div class='title'>平台使用记录</div>
+      <div class='dp'>
+      <date-picker :value="visitDate" format="yyyy-MM-dd" type="date" placeholder="选择日期" @on-change='dateSelect' :editable="editable" placement="bottom-end" class="datePicker" ></date-picker></div>
+    </div>
+      
     <!-- 上拉加载更多 -->
     <load-more
     :bottom-method="loadBottom"
@@ -12,9 +18,6 @@
     @bottom-status-change="handleBottomChange"
     ref="loadmore">
 
-    <div>平台使用记录</div>
-    <div class='dp'>
-      <date-picker :value="visitDate" format="yyyy-MM-dd" type="date" placeholder="选择日期" @on-change='dateSelect' :editable="editable" placement="bottom-end" class="datePicker" ></date-picker></div>
     <iTable border :columns="columns6" :data="data5"></iTable>
     <br/>
     <div v-show="loading" slot="bottom" class="loading">
@@ -56,36 +59,37 @@
           {
             title: '账号',
             key: 'visitorId'
-          },
-          {
-            title: '部门',
-            key: 'department',
-            filters: [
-            {
-              label: '运营',
-              value: '运营'
-            },
-            {
-              label: '技术',
-              value: '技术'
-            },
-            {
-              label: '合规',
-              value: '合规'
-            },
-            {
-              label: '综合',
-              value: '综合'
-            },
-            {
-              label: '资管',
-              value: '资管'
-            }
-            ],
-            filterMethod (value, row) {
-              return row.department.indexOf(value) > -1;
-            }
           }
+          // ,
+          // {
+          //   title: '部门',
+          //   key: 'department',
+          //   filters: [
+          //   {
+          //     label: '运营',
+          //     value: '运营'
+          //   },
+          //   {
+          //     label: '技术',
+          //     value: '技术'
+          //   },
+          //   {
+          //     label: '合规',
+          //     value: '合规'
+          //   },
+          //   {
+          //     label: '综合',
+          //     value: '综合'
+          //   },
+          //   {
+          //     label: '资管',
+          //     value: '资管'
+          //   }
+          //   ],
+          //   filterMethod (value, row) {
+          //     return row.department.indexOf(value) > -1;
+          //   }
+          // }
           ],
           data5: []
         }
@@ -144,6 +148,9 @@
         }
       },
       created: function() {
+        if(!bus.user.userid){
+          this.$router.go(-1);
+        }
         var date = new Date();
         var Y = date.getFullYear();
         var m = date.getMonth() + 1;
@@ -159,19 +166,34 @@
 
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style scoped>
+    .header{
+      background: #29a9fd;
+      width: 100%;
+      height: 1.3rem;
+      position: relative;
+      display: table;
+    }
     .datePicker{
-      position: absolute;
-      width: 3rem;
-      left: 7rem;
-      top: 0;
+      position: relative;
+    }
+    .back-btn{
+      position: relative;
+      display: table-cell;
+      width: 1rem;
+      vertical-align: middle;
     }
     .back-icon{
-      font-size: 0.7rem;
-      position: relative;
-      float: left;
-      left: 0.3rem;
+      font-size: 0.9rem;
+    }
+    .title{
+      font-size: 0.5rem;
+      display: table-cell;
+      vertical-align: middle;
     }
     .dp{
-      margin-top: 0.5rem;
+      display: table-cell;
+      vertical-align: middle;
+      position: relative;
+      width:112px;
     }
   </style>

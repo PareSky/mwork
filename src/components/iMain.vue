@@ -27,7 +27,11 @@
      </div>
    </div>
 
-   <div class="notice">
+   <Spin v-if='showLoading' size="large" fix>
+    <Icon type="load-c"  class="demo-spin-icon-load"></Icon>
+  </Spin>
+
+  <div class="notice">
     <div class="head">
       <Icon class='social' type="social-rss"></Icon>
       公告
@@ -56,7 +60,8 @@
     name: 'imain',
     data () {
       return {
-        menu: ['项目进度报告','期权开户预约']
+        menu: ['项目进度报告','期权开户预约'],
+        showLoading: false
       }
     },
     methods:{
@@ -66,10 +71,20 @@
      routeToStudy : function() {
       this.$router.push('study');
     },
-    routeCRM : ()=> {
-      window.location = 'http://oa.sywgqh.com.cn:41901/sywgqh/vision/mobileportal.jsp';
+    routeCRM : function() {
+      if (!bus.user.userid) {
+        this.Loading();
+        return;
+      }
+      var param = {userid: bus.user.userid}
+      webServer.toSmartbi(param);
     },
     routeReport : function(){
+      if (!bus.user.userid) {
+        this.Loading();
+        this.fetchUser();
+        return;
+      }
       var param = {userId: bus.user.userid, applicationId:'appreport'}
       webServer.getPermission(param).then(res=>{
         if (!res.data) {
@@ -79,27 +94,38 @@
         this.$router.push('report');
       })
     },
-    GetQueryString(name)
-    {
+    GetQueryString(name){
      var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
      var query = location.href.indexOf('?');
      var r = location.href.substr(query+1).match(reg);
      if(r!=null)return  unescape(r[2]); return null;
-    }
+   },
+   Loading: function(){
+    this.showLoading = true;
+    setTimeout(()=>{
+      //this.showLoading = false;
+    },1000)
   },
-  created: function() {
-    var getid = setInterval(()=>{
-    if (!bus.user.userid) {
-      var code = this.GetQueryString('code');
-      var param = {weixinCode: code};
-      webServer.getUserDetail(param).then((res)=>{
-        bus.user = res.data||{};
-      })}else{
-        clearInterval(getid);
-      }
-    },500)
-    }
+  fetchUser: function(){
+    var code = this.GetQueryString('code');
+    var param = {weixinCode: code};
+    webServer.getUserDetail(param).then((res)=>{
+      bus.user = res.data||{};
+    })
   }
+},
+created: function() {
+  var count = 0;
+  var getid = setInterval(()=>{
+    if (!bus.user.userid && count<20) {
+      count++
+      this.fetchUser();
+    }else{
+      clearInterval(getid);
+    }
+  },500)
+}
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -220,5 +246,19 @@
   background-position-x: 50%;
   background-position-y: 27%;
   font-weight: bold;
+}
+
+.ivu-spin-fix {
+  background-color: rgba(0,0,0,0);
+}
+
+.demo-spin-icon-load{
+  animation: ani-demo-spin 1s linear infinite;
+  font-size: 1rem;
+}
+@keyframes ani-demo-spin {
+  from { transform: rotate(0deg);}
+  50%  { transform: rotate(180deg);}
+  to   { transform: rotate(360deg);}
 }
 </style>
