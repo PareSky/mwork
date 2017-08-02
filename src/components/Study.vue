@@ -43,7 +43,6 @@
 </template>
 
 <script>
-  import bus from '../bus'
   import webServer from '../webServer'
   export default {
     name: 'study',
@@ -143,12 +142,7 @@
     margin-bottom: 0.1rem;
   }
   .back-btn{
-    display: inline-block;
     width: 1rem;
-    position: relative;
-    left: -0.5rem;
-    height: 1rem;
-    vertical-align: middle;
   }
   .back-icon{
     font-size: 1rem;
@@ -157,28 +151,23 @@
     font-size: 1rem;
   }
   .search-bar{
-   background:#29a9fd;
-   font-size:0;
+    background: #29a9fd;
+    display: flex;
+    align-items: center;
+    height: 1.5rem;
  }
  .search-bar img{
   margin: 0.2rem;
   vertical-align: middle;
 }
 .search-bar .search-btn{
-  display: inline-block;
   height: 1rem;
   width: 2rem;
   background: white;
-  vertical-align: middle;
   border-radius: 0 0.2rem 0.2rem 0 ;
-  margin: 0.2rem 0;
 }
 .search-bar input{
-  display: inline-block;
-  width: 50%;
-  vertical-align: middle;
   height: 1rem;
-  margin: 0.2rem 0;
   border-radius:  0.2rem 0 0 0.2rem;
   box-sizing: border-box;
   padding-left: 2%;

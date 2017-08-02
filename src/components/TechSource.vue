@@ -1,20 +1,18 @@
 <template>
   <div class="techSource">
 
+  <div class='search-bar'>
     <div class='back-btn' @click="goBack">
       <Icon type="home" class='back-icon'></Icon>
     </div>
-
-<div class='back' @click='getUpperMenu' >
-  <Icon v-if='!showMenu' type="arrow-up-b"></Icon>
-</div>
-
-<div class='search-bar'>
-  <input v-model='inputVal'></input>
-  <div class='search-btn' @click="search">
-    <Icon type="ios-search" class='searchB'></Icon>
+    <input v-model='inputVal'></input>
+    <div class='search-btn' @click="search">
+      <Icon type="ios-search" class='searchB'></Icon>
+    </div>
+    <div class='back' @click='getUpperMenu' >
+      <Icon v-if='!showMenu' type="arrow-up-b"></Icon>
+    </div>
   </div>
-</div>
 
 <BigMenu class='content' v-if='showMenu' :artList='menuList' @selected='selectMenu'></BigMenu>
 
@@ -127,47 +125,35 @@
     background: #eee;
     font-size: 0;
   }
+  .search-bar{
+    background: #29a9fd;
+    display: flex;
+    align-items: center;
+    height: 1.5rem;
+ }
   .back{
     font-size: 1rem;
-    position: absolute;
-    right: 0.5rem;
-    z-index: 5;
-    top: 0;
+    width: 2rem; 
     color: #fbc800;
   }
-
+  .back-btn{
+    width: 2rem;
+  }
   .back-icon{
     font-size: 1rem;
-    position: absolute;
-    top: 0.2rem;
-    left: 0.2rem;
-    width: 1rem;
-    z-index: 5;
     color: #fbc800;
   }
 
-  .search-bar{
-   background:#29a9fd;
-   font-size:0;
- }
  .search-bar .search-btn{
-  display: inline-block;
-  height: 1rem;
-  width: 2rem;
-  background: white;
-  vertical-align: middle;
-  border-radius: 0 0.2rem 0.2rem 0 ;
-  margin: 0.2rem 0;
+    height: 1rem;
+    width: 2rem;
+    background: white;
+    border-radius: 0 0.2rem 0.2rem 0;
 }
 .search-bar input{
-  display: inline-block;
-  width: 50%;
-  vertical-align: middle;
   height: 1rem;
-  margin: 0.2rem 0;
-  border-radius:  0.2rem 0 0 0.2rem;
+  border-radius: 0.2rem 0 0 0.2rem;
   box-sizing: border-box;
-  padding-left: 2%;
   border: none;
   outline: none;
   font-size: 0.5rem;

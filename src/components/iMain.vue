@@ -55,13 +55,17 @@
 
 <script>
   import webServer from '../webServer'
-  import bus from '../bus'
   export default {
     name: 'imain',
     data () {
       return {
         menu: ['项目进度报告','期权开户预约'],
         showLoading: false
+      }
+    },
+    computed: {
+      user () {
+        return this.$store.state.user
       }
     },
     methods:{
@@ -72,20 +76,20 @@
       this.$router.push('study');
     },
     routeCRM : function() {
-      if (!bus.user.userid) {
+      if (!this.user.userid) {
         this.Loading();
         return;
       }
-      var param = {userid: bus.user.userid}
+      var param = {userid: this.user.userid}
       webServer.toSmartbi(param);
     },
     routeReport : function(){
-      if (!bus.user.userid) {
+      if (!this.user.userid) {
         this.Loading();
         this.fetchUser();
         return;
       }
-      var param = {userId: bus.user.userid, applicationId:'appreport'}
+      var param = {userId: this.user.userid, applicationId:'appreport'}
       webServer.getPermission(param).then(res=>{
         if (!res.data) {
           alert('你没有权限');
@@ -103,21 +107,22 @@
    Loading: function(){
     this.showLoading = true;
     setTimeout(()=>{
-      //this.showLoading = false;
+      this.showLoading = false;
     },1000)
   },
   fetchUser: function(){
     var code = this.GetQueryString('code');
     var param = {weixinCode: code};
     webServer.getUserDetail(param).then((res)=>{
-      bus.user = res.data||{};
+      var user = res.data||{};
+      this.$store.commit('setUser',user);
     })
   }
 },
 created: function() {
   var count = 0;
   var getid = setInterval(()=>{
-    if (!bus.user.userid && count<20) {
+    if (!this.user.userid && count<20) {
       count++
       this.fetchUser();
     }else{

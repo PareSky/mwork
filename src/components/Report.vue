@@ -29,7 +29,6 @@
 <script>
   import loadmore from './Loadmore'
   import webServer from '../webServer'
-  import bus from '../bus'
   export default {
     data () {
       return {
@@ -94,6 +93,11 @@
           data5: []
         }
       },
+      computed: {
+        user () {
+          return this.$store.state.user
+        }
+      },
       methods:{
         goBack: function(){
           this.$router.push('/');
@@ -148,7 +152,7 @@
         }
       },
       created: function() {
-        if(!bus.user.userid){
+        if(!this.user.userid){
           this.$router.go(-1);
         }
         var date = new Date();

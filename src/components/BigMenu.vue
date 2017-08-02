@@ -31,18 +31,18 @@
 <style scoped>
   .bigMenu {
     font-size: 0;
-    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 97%;
+    margin: auto;
   }
   .bigMenu li{
-   position:relative;
-   display:inline-block;
    box-sizing: border-box;
-   margin: 0.11rem;
-   height: 2.8rem;
-   width: 31%;
-   text-align: center;
-   background: #fff;
-   vertical-align: middle;
+    margin: 0.11rem;
+    height: 2.8rem;
+    width: 3rem;
+    background: #fff;
  }
  .bigMenu li img{
    position: relative;
