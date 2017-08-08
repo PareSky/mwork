@@ -6,9 +6,11 @@ import Article from '@/components/Article'
 import TechSource from '@/components/TechSource'
 import Report from '@/components/Report'
 
+import store from '../store'
+
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -34,6 +36,27 @@ export default new Router({
       path: '/report',
       name: 'Report',
       component: Report
+    },
+    {
+      path: '/noAuth',
+      name: 'NoAuth',
+      component: (resolve) => {
+        require(['../components/NoAuth'], resolve)
+      }
     }
   ]
 })
+
+
+//  判断是否微信端
+router.beforeEach(function(to, from, next){
+  if(/^\/noAuth/.test(to.path)){
+    next();
+  }else if(!store.state.user.userid){
+    next('/noAuth')
+  }else{
+    next()
+  }
+})
+
+export default router
