@@ -8,10 +8,12 @@ import 'iview/dist/styles/iview.css'
 import Iview from './components/Iview'
 import bigMenu from './components/BigMenu'
 import loadmore from './components/Loadmore'
+import loading from './components/common/Loading'
 
 Vue.use(Iview);
 Vue.use(bigMenu);
 Vue.use(loadmore);
+Vue.use(loading);
 
 Vue.config.productionTip = false
 

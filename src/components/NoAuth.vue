@@ -1,5 +1,8 @@
 <template>
-<div v-show="show">仅支持企业号打开！</div>
+<div v-show="show">未取到用户信息！
+
+    <Loading></Loading>
+    </div>
 </template>
 <script>
   import webServer from '../webServer'

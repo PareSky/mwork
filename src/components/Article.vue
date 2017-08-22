@@ -43,7 +43,7 @@
     font-size: 0.9rem;
     position: fixed;
     top: -0.1rem;
-    left: 4.3rem;
+    left: 0;
     z-index: 1000;
     color:#fbc800;
     width: 2rem;

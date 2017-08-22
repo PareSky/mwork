@@ -28,8 +28,9 @@
    </div>
 
    <Spin v-if='showLoading' size="large" fix>
-    <Icon type="load-c"  class="demo-spin-icon-load"></Icon>
+    <Loading></Loading>
   </Spin>
+
 
   <div class="notice">
     <div class="head">
@@ -54,6 +55,7 @@
 </template>
 
 <script>
+  import loading from './common/Loading'
   import webServer from '../webServer'
   export default {
     name: 'imain',

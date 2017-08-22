@@ -61,7 +61,7 @@
     },
     toArticle : function(n){
       console.log('toArticle',n);
-      this.$router.push({name:'Article', params: { src: n, prePage: 'techSource' }});
+      this.$router.push({name:'Article', params: { src: n}});
     },
     switchImg: function(){
       this.imgflag = !this.imgflag;

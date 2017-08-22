@@ -109,7 +109,7 @@
       toArticle : function(n) {
         console.log('toArticle',n);
       // window.location = n;
-      this.$router.push({name:'Article', params: { src: n ,prePage:"study"}});
+      this.$router.push({name:'Article', params: { src: n}});
     },
     setList: function(list){
       this.menuList = list;
