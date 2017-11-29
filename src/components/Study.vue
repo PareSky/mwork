@@ -59,7 +59,14 @@
         // {name:'入职培训',url:'art3'},
         // {name:'技术培训',url:'art1'}
         ],
-        theme1: 'light'
+        theme1: 'light',
+        types:{
+          word:'doc docx',
+          ppt:'pptx ppt',
+          excel:'xls xlsx',
+          pdf: 'pdf',
+          video: 'mpg mp4 mpeg avi rm rmvb mov wmv asf'
+        }
       }
     },
     computed: {
@@ -78,16 +85,11 @@
         var name = title.substr(0,title.lastIndexOf("."));
         art.name = name;
         var suffix=title.substring(title.lastIndexOf(".")+1).toLowerCase();
-        if (suffix=='doc'||suffix=='docx') {
-          art.type = 'word';
-        }else if(['pptx', 'ppt'].indexOf(suffix)!=-1){
-          art.type = 'ppt';
-        }else if(suffix == 'xls'||suffix == 'xlsx'){
-          art.type = 'excel';
-        }else if(suffix == 'pdf'){
-          art.type = 'pdf';
-        }else if(['mpg', 'mp4','mpeg', 'avi', 'rm', 'rmvb', 'mov', 'wmv', 'asf'].indexOf(suffix)!=-1){
-          art.type = 'video';
+        for(var type in this.types){
+          if(this.types[type].indexOf(suffix)>-1){
+            art.type = type;
+            break;
+          }
         }
       },
       selectMenu: function(n){
