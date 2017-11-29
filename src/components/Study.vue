@@ -4,10 +4,7 @@
       <div class='back-btn' @click="goBack">
         <Icon type="ios-arrow-left" class='back-icon'></Icon>
       </div>
-      <input v-model='inputVal'></input>
-      <div class='search-btn' @click="search">
-        <Icon type="ios-search" class='searchB'></Icon>
-      </div>
+      <search-bar @search='search'></search-bar>
     </div>
 
 
@@ -44,11 +41,14 @@
 
 <script>
   import webServer from '../webServer'
+  import searchBar from './common/searchBar'
   export default {
+    components: {
+        searchBar,
+    },
     name: 'study',
     data () {
       return {
-        inputVal:'',
         activeMenu: '',
         menuList: [
         // {  "id": "1",  "name": "name1"},
@@ -68,8 +68,9 @@
       goBack: function(){
         this.$router.push('/');
       },
-      search: function(){
-        var param = {value:this.inputVal,menu:this.activeMenu};
+      search: function(e){
+        console.log('search',e);
+        var param = {value:e, menu:this.activeMenu};
         this.getArticleList(param);
       },
       insertFileType: function(art){
@@ -115,7 +116,7 @@
       this.menuList = list;
     }
   },
-  created: function() {
+  mounted: function() {
     console.log('ready');
     webServer.getArticleMenuList().then((res)=>{
      this.setList(res.data);
@@ -147,34 +148,12 @@
   .back-icon{
     font-size: 1rem;
   }
-  .searchB{
-    font-size: 1rem;
-  }
   .search-bar{
     background: #29a9fd;
     display: flex;
     align-items: center;
     height: 1.5rem;
  }
- .search-bar img{
-  margin: 0.2rem;
-  vertical-align: middle;
-}
-.search-bar .search-btn{
-  height: 1rem;
-  width: 2rem;
-  background: white;
-  border-radius: 0 0.2rem 0.2rem 0 ;
-}
-.search-bar input{
-  height: 1rem;
-  border-radius:  0.2rem 0 0 0.2rem;
-  box-sizing: border-box;
-  padding-left: 2%;
-  border: none;
-  outline: none;
-  font-size: 0.5rem;
-}
 
 .ivu-menu-item, .ivu-menu {
   font-size: 0.5rem;
