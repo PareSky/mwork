@@ -2,7 +2,7 @@
   <div>
    <ul class="bigMenu">
      <li v-for="(item,index) in artList" @click="select(item.id)" :key="index">
-       <img src="../assets/file.png"><span>{{item.name}}</span>
+       <img src="../../assets/file.png"><span>{{item.name}}</span>
      </li>
    </ul>
  </div>
@@ -43,6 +43,7 @@
     height: 2.8rem;
     width: 3rem;
     background: #fff;
+    border-radius: 0.2rem;
  }
  .bigMenu li img{
    position: relative;

@@ -5,16 +5,13 @@
     <div class='back-btn' @click="goBack">
       <Icon type="home" class='back-icon'></Icon>
     </div>
-    <input v-model='inputVal'></input>
-    <div class='search-btn' @click="search">
-      <Icon type="ios-search" class='searchB'></Icon>
-    </div>
+    <search-bar @search='search'></search-bar>
     <div class='back' @click='getUpperMenu' >
       <Icon v-if='!showMenu' type="arrow-up-b"></Icon>
     </div>
   </div>
 
-<BigMenu class='content' v-if='showMenu' :artList='menuList' @selected='selectMenu'></BigMenu>
+<big-menu class='content' v-if='showMenu' :artList='menuList' @selected='selectMenu'></big-menu>
 
 <div v-if='!showMenu' class='content'>
   <div v-for="(item,index) in listData" v-if='item.parentNodeId==parentNodeId'  class='artCard' :key="index">
@@ -40,12 +37,16 @@
 
 <script>
   import webServer from '../webServer'
-  import bigMenu from './BigMenu'
+  import bigMenu from './common/BigMenu'
+  import searchBar from './common/searchBar'
   export default {
     name: 'techSource',
+    components:{
+      searchBar,
+      bigMenu
+    },
     data () {
       return {
-        inputVal:'',
         listData:[],
         parentNodeId : '',
         showMenu: true,
@@ -55,8 +56,9 @@
       }
     },
     methods:{
-      search: function(){
-        var param = {value:this.inputVal};
+      search: function(e){
+        console.log(e)
+        var param = {value:e};
       // this.getArticleList(param);
     },
     toArticle : function(n){
@@ -144,25 +146,9 @@
     color: #fbc800;
   }
 
- .search-bar .search-btn{
-    height: 1rem;
-    width: 2rem;
-    background: white;
-    border-radius: 0 0.2rem 0.2rem 0;
-}
-.search-bar input{
-  height: 1rem;
-  border-radius: 0.2rem 0 0 0.2rem;
-  box-sizing: border-box;
-  border: none;
-  outline: none;
-  font-size: 0.5rem;
-}
-.searchB{
-  font-size: 1rem;
-}
-
 .content{
+  padding-bottom: 3rem;
+  padding-top: 0.5rem;
 }
 .artCard{width: 100%;margin: 0.1rem 0;
   background: #fff;
