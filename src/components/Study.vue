@@ -4,7 +4,7 @@
       <div class='back-btn' @click="goBack">
         <Icon type="ios-arrow-left" class='back-icon'></Icon>
       </div>
-      <search-bar @search='search'></search-bar>
+      <search-bar @search='search'/>
     </div>
 
 
@@ -41,10 +41,10 @@
 
 <script>
   import webServer from '../webServer'
-  import searchBar from './common/searchBar'
+  import SearchBar from './common/SearchBar'
   export default {
     components: {
-        searchBar,
+        SearchBar,
     },
     name: 'study',
     data () {

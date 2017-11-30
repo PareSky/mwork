@@ -5,7 +5,7 @@
     <div class='back-btn' @click="goBack">
       <Icon type="home" class='back-icon'></Icon>
     </div>
-    <search-bar @search='search'></search-bar>
+    <search-bar @search='search'/>
     <div class='back' @click='getUpperMenu' >
       <Icon v-if='!showMenu' type="arrow-up-b"></Icon>
     </div>
@@ -37,13 +37,13 @@
 
 <script>
   import webServer from '../webServer'
-  import bigMenu from './common/BigMenu'
-  import searchBar from './common/searchBar'
+  import BigMenu from './common/BigMenu'
+  import SearchBar from './common/SearchBar'
   export default {
     name: 'techSource',
     components:{
-      searchBar,
-      bigMenu
+      SearchBar,
+      BigMenu
     },
     data () {
       return {
