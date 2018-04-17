@@ -6,6 +6,7 @@ import Article from '@/components/Article'
 import TechSource from '@/components/TechSource'
 import TechGarden from '@/components/TechGarden'
 import Report from '@/components/Report'
+import Charts from '@/components/Charts'
 
 import store from '../store'
 
@@ -49,6 +50,11 @@ const router = new Router({
       component: (resolve) => {
         require(['../components/NoAuth'], resolve)
       }
+    },
+    {
+      path: '/charts',
+      name: 'Charts',
+      component: Charts
     }
   ]
 })
