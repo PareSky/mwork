@@ -4,7 +4,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-	user:{}
+	user:{},
+	lastRoute: null
 }
 const mutations ={
 	setUser(state, user){

@@ -1,83 +1,66 @@
 import axios from 'axios'
+//import webServerConst from './webServer-prod'
+import webServerConst from './webServer-dev'
 
 class WebServer {
   constructor(n) {
-    this.mock = true;
-      // this.host = 'http://192.168.8.18/';
-      this.host = 'http://oa.sywgqh.com.cn:41901/';
-      this.url={
-        articleList : 'appstudy/study_file_node/get_by_parentNodeId_list_json',
-        articleMenuList : 'appstudy/study_file_node/get_root_list_json',
-        techMenuList: 'apptech/source_node/get_root_list_json',
-        techList : 'apptech/source_node/get_by_parentNodeId_list_json',
-        techAllList: 'apptech/source_node/get_list_json',
-        visitPage: 'appdoor/visit_page_log/get_page_json',
-        userDetail: 'appdoor/weixin_user_api/get_user_detail_json',
-        userPermission: 'appdoor/privilege_api/get_access_application_json',
-        smartbi: 'appdoor/smartbi_authen_api/authen_redirect_url?userId=useridValue&redirectUrl=http://oa.sywgqh.com.cn:41901/smartbi/vision/mobileportal.jsp'
-      };
-    }
-    handler(url,param,method){
-      var config = {
-        url:url,
-        method: method||'get',
-        params: param,
-        data:param
-      };
-      if (this.mock) {
-        config.url = 'mock/'+ url + '.json';
-        config.method = 'get';
-      }else {
-        config.url = this.host+url;
-      }
-      return axios(config).then(function(res){
+    axios.defaults.headers.common['authorization'] = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTQyIn0.TcKvZsFtxaeMmZGhdC-zEZFAd-4jD12I-Ravmk2y0dtcxa6mdm6pdiRs83Hsu5kyV_a8DBXLnvOG-8LQVBDmEQ";
+  }
+  handler(url, param, method) {
+    var config = {
+      url: url,
+      method: method || 'get',
+      params: param,
+      data: param
+    };
+    return axios(config).then(function(res) {
         return res.data
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
-    }
-    getArticleList(param){
-      var url = this.url.articleList;
-      return this.handler(url, param);
-    }
-    getArticleMenuList(param){
-      var url = this.url.articleMenuList;
-      return this.handler(url, param);
-    }
-    getTechList(param){
-      var url = this.url.techList;
-      return this.handler(url, param);
-    }
-    getTechMenuList(param){
-      var url = this.url.techMenuList;
-      return this.handler(url, param);
-    }
-    getTechAllList(param){
-      var url = this.url.techAllList;
-      return this.handler(url, param);
-    }
-    getVisitPage(param){
-      var url = this.url.visitPage;
-      return this.handler(url, param,'post');
-    }
-    //if fail, return null
-    getUserDetail(param){
-      var url = this.url.userDetail;
-      return this.handler(url, param);
-    }
-    getPermission(param){
-      var url = this.url.userPermission;
-      return this.handler(url, param);
-    }
-    toSmartbi(param){
-      var url = this.host+ this.url.smartbi;
-      url = url.replace('useridValue', param.userid);
-      location.href = url;
-    }
-
+  }
+  getArticleList(param) {
+    var url = webServerConst.url.articleList;
+    return this.handler(url, param);
+  }
+  getArticleMenuList(param) {
+    var url = webServerConst.url.articleMenuList;
+    return this.handler(url, param);
+  }
+  getTechList(param) {
+    var url = webServerConst.url.techList;
+    return this.handler(url, param);
+  }
+  getTechMenuList(param) {
+    var url = webServerConst.url.techMenuList;
+    return this.handler(url, param);
+  }
+  getTechAllList(param) {
+    var url = webServerConst.url.techAllList;
+    return this.handler(url, param);
+  }
+  getVisitPage(param) {
+    var url = webServerConst.url.visitPage;
+    return this.handler(url, param, 'post');
+  }
+  //if fail, return null
+  getUserDetail(param) {
+    var url = webServerConst.url.userDetail;
+    return this.handler(url, param);
+  }
+  getPermission(param) {
+    var url = webServerConst.url.userPermission;
+    return this.handler(url, param);
+  }
+  toSmartbi(param) {
+    var url = webServerConst.url.smartbi;
+    url = url.replace('useridValue', param.userid);
+    location.href = url;
   }
 
-  var webServer = new WebServer();
+}
 
-  export default webServer
+var webServer = new WebServer();
+
+export default webServer

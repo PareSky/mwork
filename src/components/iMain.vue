@@ -21,6 +21,14 @@
        <Icon class='iconM iconReport' type="ios-paper-outline"></Icon>
        <span>使用分析</span>
      </div>
+     <div class='menu' @click='toNetban'>
+       <Icon class='iconM iconStudy' type="ios-book-outline"></Icon>
+       <span>在线学习</span>
+     </div>
+     <!-- <div class='menu' @click='toNetban'>
+       <Icon class='iconM iconMore' type="grid"></Icon>
+       <span>更多功能</span>
+     </div> -->
      <div v-for='n in menu' class='menu dark'>
        <Icon class='plus' type="ios-help-outline"></Icon>
        <span>{{n}}</span>
@@ -61,7 +69,7 @@
     name: 'imain',
     data () {
       return {
-        menu: ['项目进度报告','期权开户预约'],
+        menu: ['期权开户预约'],
         showLoading: false
       }
     },
@@ -71,6 +79,15 @@
       }
     },
     methods:{
+      toNetban: function(){
+        let param = {
+          uid : this.user.userid,
+          url: webServer.url.NetbanAuth+this.user.userid,
+        };
+        webServer.getScript(param,function(){
+            location.href='http://custom.netban.cn/app/?id=T17243';
+        })
+      },
       routeToTech : function() {
        this.$router.push('techSource');
      },
@@ -181,6 +198,12 @@ created: function() {
 }
 .menuBox .iconReport{
   color: #33b38d;
+}
+.menuBox .iconStudy{
+  color: #f5629e;
+}
+.menuBox .iconMore{
+  color: #68829a;
 }
 .menuBox span{
   position: relative;

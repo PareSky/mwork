@@ -2,7 +2,7 @@
     "code": 0,
     "message": "成功",
     "data": {
-            "userid": "0942",
+            "userid": "0941",
             "name": "李四",
             "department": [
                 3
@@ -11,6 +11,7 @@
             "mobile": "15050495892",
             "gender": 1,
             "email": "xxx@xx.com",
-            "avatar": "http://shp.qpic.cn/bizmp/xxxxxxxxxxx/0"
+            "avatar": "http://shp.qpic.cn/bizmp/xxxxxxxxxxx/0",
+			      "innerToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTQyIn0.TcKvZsFtxaeMmZGhdC-zEZFAd-4jD12I-Ravmk2y0dtcxa6mdm6pdiRs83Hsu5kyV_a8DBXLnvOG-8LQVBDmEQ"
         }
 }

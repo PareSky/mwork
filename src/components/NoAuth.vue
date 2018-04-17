@@ -6,6 +6,7 @@
 </template>
 <script>
   import webServer from '../webServer'
+  import axios from 'axios'
   export default {
     data () {
       return {
@@ -30,7 +31,24 @@
           webServer.getUserDetail(param).then((res)=>{
             var user = res.data||{};
             this.$store.commit('setUser',user);
-            if (this.user.userid)this.$router.push('/');
+            // axios.get('http://192.168.8.18:8080/token_api/get_token_json', {
+            axios.get('http://localhost:8090/mock/token_api/get_token_json.json', {
+              params: {
+                account:'0942',
+                password: '6029054bcb76be7d401b0ecd263193f3'
+              }
+            })
+            .then((response) =>{
+              console.log('response.data',response.data);
+              axios.defaults.headers.common['authorization'] = response.data.data;
+              if (this.user.userid){
+                let last = this.$store.state.lastRoute;
+                this.$router.push(last.path || '/');
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
           })
         }
       },
